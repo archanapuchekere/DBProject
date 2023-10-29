@@ -6,17 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.mysql.cj.protocol.Resultset;
 
-public class InsertExample {
+public class DeleteExample {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce","root","root");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce", "root", "root");
 		Statement stmt = con.createStatement();
-		
-		stmt.executeUpdate("insert into eproduct(name,price,date_added)values('TV',26000.00,now())");
-		stmt.executeQuery("select * from eproduct");
+		stmt.executeUpdate("delete from eproduct where name='tv'");
 		ResultSet res = stmt.executeQuery("select * from eproduct");
 		while(res.next()) {
 			System.out.print("Product ID : " + res.getInt("id"));
@@ -25,6 +24,7 @@ public class InsertExample {
 			System.out.println();
 		}
 con.close();
+
 	}
 
 }

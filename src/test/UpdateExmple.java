@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-public class InsertExample {
+public class UpdateExmple {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
@@ -15,7 +14,7 @@ public class InsertExample {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce","root","root");
 		Statement stmt = con.createStatement();
 		
-		stmt.executeUpdate("insert into eproduct(name,price,date_added)values('TV',26000.00,now())");
+		stmt.executeUpdate("update eproduct set price=50000.00 where name='Laptop'");
 		stmt.executeQuery("select * from eproduct");
 		ResultSet res = stmt.executeQuery("select * from eproduct");
 		while(res.next()) {
